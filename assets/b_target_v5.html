@@ -94,25 +94,20 @@ map.on('load', () => {
 //         name: "Idaho County",
 //         population: 16315
 //     }
-map.addSource('synthetic_point_10pct_zip_cou-bhs8ep', {
+map.addSource('school_location_2021-d7rfhe', {
 'type': 'vector',
-'url': 'mapbox://wonlee.2mf7cpnq'
+'url': 'mapbox://wonlee.4za2rnok'
 }); 
  
-map.addSource('OptimizedHotSpotAnalysis_0_3_-arld70', {
-'type': 'vector',
-'url': 'mapbox://wonlee.99y77wmu'
-}); 
  
-
  
  
 
 map.addLayer(
 {
-'id': 'synthetic_point_10pct_zip_cou-bhs8ep',
-'source': 'synthetic_point_10pct_zip_cou-bhs8ep',
-'source-layer': 'synthetic_point_10pct_zip_cou-bhs8ep',
+'id': 'school_location_2021-d7rfhe',
+'source': 'school_location_2021-d7rfhe',
+'source-layer': 'school_location_2021-d7rfhe',
 'minzoom': 5, 
 
 'type': 'circle',
@@ -133,40 +128,21 @@ map.addLayer(
 [22, 180]
 ]
 },
+
+'circle-color': [
+'match',
+['get', 'charter_od'],
+'0',
+'#fbb03b',
+'1',
+'#223b53',  
+]
+
+
 }
 },
 'road-label-simple' // Add layer below labels
 );
-
-
-
-map.addLayer({
-'id': 'OptimizedHotSpotAnalysis_0_3_-arld70',
-'type': 'fill',
-'source': 'OptimizedHotSpotAnalysis_0_3_-arld70',
-'layout': {
-// Make the layer visible by default.
-'visibility': 'visible'
-},
-'paint': {
-'fill-color':[
-'interpolate',
-['linear'],
-['get', 'Gi_Bin'],
--3, '#0121E3',    
--2, '#4258E0',  
--1, '#8893D6',  
-0, '#E1D4D4',  
-1, '#EDA0A0',    
-2, '#E65959',  
-3, '#FF0000',  
-
-],
-"fill-opacity": 0.6
-},
-'source-layer': 'OptimizedHotSpotAnalysis_0_3_-arld70',
-});
-
  
  
 
@@ -178,15 +154,15 @@ closeButton: false,
 closeOnClick: false
 });
 
-map.on('mouseenter', 'synthetic_point_10pct_zip_cou-bhs8ep', (event) => {
+map.on('mouseenter', 'school_location_2021-d7rfhe', (event) => {
 // Change the cursor style as a UI indicator.
 map.getCanvas().style.cursor = 'pointer';
 
 // Copy coordinates array.
 const coordinates = event.features[0].geometry.coordinates.slice(0,2);
-    const zipcode = event.features[0].properties.ZCTA5CE20;
-    const county = event.features[0].properties.county;
-    const state = event.features[0].properties.state; 
+    const district_n = event.features[0].properties.district_n;
+    const schname = event.features[0].properties.schname;
+    const num_studen = event.features[0].properties.num_studen; 
  
 // Ensure that if the map is zoomed out such that multiple
 // copies of the feature are visible, the popup appears
@@ -200,17 +176,17 @@ popup.setLngLat(coordinates)
                         <tr>
                             <td>Zipcode</td>
                             <td>:</td>
-                            <td>${zipcode}</td>
+                            <td>${district_n}</td>
                         </tr>
                         <tr>
                             <td>County</td>
                             <td>:</td>
-                            <td>${county}</td>
+                            <td>${schname}</td>
                         </tr>
                         <tr>
                             <td>State</td>
                             <td>:</td>
-                            <td>${state}</td>
+                            <td>${num_studen}</td>
                         </tr>                        
                         </table>                  `)
     .addTo(map);
@@ -219,7 +195,7 @@ popup.setLngLat(coordinates)
 
 });
 
-map.on('mouseleave',  'synthetic_point_10pct_zip_cou-bhs8ep', () => {
+map.on('mouseleave',  'school_location_2021-d7rfhe', () => {
 map.getCanvas().style.cursor = '';
 popup.remove();
 });
