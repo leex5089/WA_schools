@@ -67,10 +67,10 @@ const map = new mapboxgl.Map({
 container: 'map',
 // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
 style: 'mapbox://styles/mapbox/light-v11',
-center: [-94.581124,39.115775],
+center: [-122.06273251325862,47.6666028857169],
 minZoom: 6,
 zoom: 9
-});  
+});   
 const zoomThreshold = 3;
 const zoomThreshold2 = 9;
 const zoomThreshold3 = 10;
@@ -129,14 +129,6 @@ map.addLayer(
 ]
 },
 
-'circle-color': [
-'match',
-['get', 'charter_od'],
-'0',
-'#fbb03b',
-'1',
-'#223b53',  
-]
 
 
 }
