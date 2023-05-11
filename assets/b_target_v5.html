@@ -66,7 +66,7 @@ width: 10px;
 const map = new mapboxgl.Map({
 container: 'map',
 // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
-style: 'mapbox://styles/mapbox/light-v11',
+style: 'mapbox://styles/mapbox/dark-v11',
 center: [-122.06273251325862,47.6666028857169],
 minZoom: 6,
 zoom: 9
@@ -122,9 +122,9 @@ map.addLayer(
 'circle-stroke-color': 'black',
 // Make circles larger as the user zooms from z12 to z22.
 'circle-radius': {
-'base': 1.75,
+'base': 3,
 'stops': [
-[6, 2],
+[6, 5],
 [22, 180]
 ]
 },
