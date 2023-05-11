@@ -1,0 +1,14 @@
+# specify main menu items here
+
+- text: Home
+  url: /
+- text: Boundaries
+  url: /map  
+- text: Count
+  url: /Target_v2
+- text: Density
+  url: /Target_v3
+- text: Hotspot
+  url: /Target_v4
+- text: Point
+  url: /Target_v5
