@@ -129,17 +129,21 @@ map.addLayer(
 ]
 },
 
-'circle-color': [
-'match',
-['get', 'charter_od'],
-0,
-'#fbb03b',
-1,
-'#223b53',  
+
+
+'circle-color': {
+property: 'charter_od',
+stops: [
+[0, '#f1f075'],
+[1, '#e55e5e']
 ]
 
+},
 
-}
+ 
+
+
+},
 },
 'road-label-simple' // Add layer below labels
 );
