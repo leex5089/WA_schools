@@ -129,6 +129,14 @@ map.addLayer(
 ]
 },
 
+'circle-color': [
+'match',
+['get', 'charter_od'],
+0,
+'#fbb03b',
+1,
+'#223b53',  
+]
 
 
 }
@@ -154,7 +162,7 @@ map.getCanvas().style.cursor = 'pointer';
 const coordinates = event.features[0].geometry.coordinates.slice(0,2);
     const district_n = event.features[0].properties.district_n;
     const schname = event.features[0].properties.schname;
-    const num_studen = event.features[0].properties.num_studen; 
+    const city_odbc = event.features[0].properties.city_odbc; 
  
 // Ensure that if the map is zoomed out such that multiple
 // copies of the feature are visible, the popup appears
@@ -166,19 +174,19 @@ popup.setLngLat(coordinates)
      .setHTML(`     
 <table > 
                         <tr>
-                            <td>Zipcode</td>
+                            <td>District</td>
                             <td>:</td>
                             <td>${district_n}</td>
                         </tr>
                         <tr>
-                            <td>County</td>
+                            <td>School</td>
                             <td>:</td>
                             <td>${schname}</td>
                         </tr>
                         <tr>
-                            <td>State</td>
+                            <td>City</td>
                             <td>:</td>
-                            <td>${num_studen}</td>
+                            <td>${city_odbc}</td>
                         </tr>                        
                         </table>                  `)
     .addTo(map);
